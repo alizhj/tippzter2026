@@ -1,4 +1,5 @@
 import type { Group, GroupStanding } from "@/lib/types";
+import { resolveFlagUrl } from "@/lib/flag-url";
 import { toSwedishTeamName } from "@/lib/team-names-sv";
 import { worldCupGroupsFallback } from "@/lib/world-cup-groups.generated";
 
@@ -10,6 +11,7 @@ const GROUP_ORDER = "ABCDEFGHIJKL".split("");
 type FifaTeamResponse = {
   teams?: Array<{
     teamName: string;
+    teamFlag?: string;
     stage: string;
     worldRanking?: number;
   }>;
@@ -17,9 +19,10 @@ type FifaTeamResponse = {
   tournamentState?: string;
 };
 
-function emptyStanding(team: string): GroupStanding {
+function emptyStanding(team: string, flag?: string): GroupStanding {
   return {
     team,
+    flag,
     played: 0,
     won: 0,
     drawn: 0,
@@ -43,7 +46,12 @@ function buildGroupsFromTeams(
   for (const team of teams) {
     const letter = parseGroupLetter(team.stage);
     const list = byLetter.get(letter) ?? [];
-    list.push(emptyStanding(toSwedishTeamName(team.teamName)));
+    list.push(
+      emptyStanding(
+        toSwedishTeamName(team.teamName),
+        resolveFlagUrl(team.teamFlag),
+      ),
+    );
     byLetter.set(letter, list);
   }
 

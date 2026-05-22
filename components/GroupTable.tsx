@@ -1,3 +1,4 @@
+import { TeamFlag } from "@/components/TeamFlag";
 import type { Group } from "@/lib/types";
 
 type Props = {
@@ -42,12 +43,23 @@ export function GroupTable({ group, highlightQualifiers = true }: Props) {
                 >
                   <td className="px-4 py-2.5 text-zinc-500">{i + 1}</td>
                   <td className="px-4 py-2.5 font-medium text-zinc-900 dark:text-zinc-50">
-                    {row.team}
-                    {qualifies && (
-                      <span className="ml-2 text-xs text-emerald-600 dark:text-emerald-400">
-                        →
+                    <span className="flex items-center gap-2">
+                      {row.flag && (
+                        <TeamFlag
+                          src={row.flag}
+                          alt={`${row.team} flagga`}
+                          size="sm"
+                        />
+                      )}
+                      <span>
+                        {row.team}
+                        {qualifies && (
+                          <span className="ml-2 text-xs text-emerald-600 dark:text-emerald-400">
+                            →
+                          </span>
+                        )}
                       </span>
-                    )}
+                    </span>
                   </td>
                   <td className="px-2 py-2.5 text-center">{row.played}</td>
                   <td className="px-2 py-2.5 text-center">{row.won}</td>

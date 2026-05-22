@@ -1,37 +1,6 @@
-import type { Group, LeaderboardEntry, Match } from "@/lib/types";
+import type { LeaderboardEntry } from "@/lib/types";
 
 export type { Group, GroupStanding, LeaderboardEntry, Match } from "@/lib/types";
-
-export const upcomingMatches: Match[] = [
-  {
-    id: "m1",
-    home: "Mexiko",
-    away: "Sydafrika",
-    kickoff: "11 jun 21:00",
-    group: "A",
-  },
-  {
-    id: "m2",
-    home: "Sydkorea",
-    away: "Tjeckien",
-    kickoff: "12 jun 03:00",
-    group: "A",
-  },
-  {
-    id: "m3",
-    home: "Kanada",
-    away: "Qatar",
-    kickoff: "12 jun 21:00",
-    group: "B",
-  },
-  {
-    id: "m4",
-    home: "Brasilien",
-    away: "Marocko",
-    kickoff: "13 jun 21:00",
-    group: "C",
-  },
-];
 
 export const leaderboard: LeaderboardEntry[] = [
   {

@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "sync:fifa": "node scripts/sync-fifa-teams.mjs",
     "sync:teams": "node scripts/sync-fifa-teams.mjs"
   },
   "dependencies": {

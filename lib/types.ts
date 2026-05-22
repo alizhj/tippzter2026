@@ -1,5 +1,6 @@
 export type GroupStanding = {
   team: string;
+  flag?: string;
   played: number;
   won: number;
   drawn: number;
@@ -19,8 +20,14 @@ export type Match = {
   id: string;
   home: string;
   away: string;
+  homeFlag?: string;
+  awayFlag?: string;
   kickoff: string;
+  kickoffIso: string;
   group?: string;
+  stage?: string;
+  stadium?: string;
+  matchNumber?: number;
   homeScore?: number;
   awayScore?: number;
 };

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import type { Match } from "@/lib/mock-data";
+import { TeamFlag } from "@/components/TeamFlag";
+import type { Match } from "@/lib/types";
 
 type Props = {
   match: Match;
@@ -25,16 +26,31 @@ export function MatchTipCard({ match }: Props) {
             Grupp {match.group}
           </span>
         )}
-        <time>{match.kickoff}</time>
+        <div className="text-right">
+          <time>{match.kickoff}</time>
+          {match.stadium && (
+            <p className="mt-0.5 max-w-[140px] truncate">{match.stadium}</p>
+          )}
+        </div>
       </div>
-      <div className="mb-4 flex items-center justify-between gap-4">
-        <span className="flex-1 text-right font-semibold text-zinc-900 dark:text-zinc-50">
-          {match.home}
-        </span>
-        <span className="text-sm text-zinc-400">vs</span>
-        <span className="flex-1 font-semibold text-zinc-900 dark:text-zinc-50">
-          {match.away}
-        </span>
+      <div className="mb-4 flex items-center justify-between gap-3">
+        <div className="flex min-w-0 flex-1 items-center gap-2">
+          {match.awayFlag && (
+            <TeamFlag src={match.awayFlag} alt={`${match.away} flagga`} />
+          )}
+          <span className="truncate font-semibold text-zinc-900 dark:text-zinc-50">
+            {match.away}
+          </span>
+        </div>
+        <span className="shrink-0 text-sm text-zinc-400">vs</span>
+        <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
+          <span className="truncate text-right font-semibold text-zinc-900 dark:text-zinc-50">
+            {match.home}
+          </span>
+          {match.homeFlag && (
+            <TeamFlag src={match.homeFlag} alt={`${match.home} flagga`} />
+          )}
+        </div>
       </div>
       <div className="flex items-center justify-center gap-3">
         <input
