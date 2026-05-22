@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sync:teams": "node scripts/sync-fifa-teams.mjs"
   },
   "dependencies": {
     "next": "16.2.6",
